@@ -1,22 +1,32 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-
 Vue.use(VueRouter)
 
 const routes = [
+  { path: '/', redirect: '/login' },
+  { path: '/login', component: () => import('@/views/Login') },
   {
-    path: '/',
-    name: 'home',
-    component: HomeView
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    path: '/home',
+    component: () => import('@/views/Home'),
+    redirect: '/home/welcome',
+    children: [{ path: 'welcome', component: () => import('@/views/Welcome') },
+      { path: 'users', component: () => import('@/views/Users') },
+      { path: 'permissionmanager', component: () => import('@/views/PermissionManager') },
+      {
+        path: 'goodslist',
+        component: () => import('@/views/GoodsList'),
+        meta: { showTag: true },
+        children: [
+          { path: 'add', name: 'add', component: () => import('@/views/addGoods'), meta: { showTag: false } }
+
+        ]
+      },
+      { path: 'orders', component: () => import('@/views/orderManager') },
+      { path: 'userlist', component: () => import('@/views/userlist') },
+      { path: 'categoriesparams', component: () => import('@/views/categoriesParams') },
+      { path: 'categoriesgoods', component: () => import('@/views/categoriesGoods') }
+
+    ]
   }
 ]
 
