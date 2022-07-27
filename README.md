@@ -1,24 +1,4 @@
-# hm_admin
+今天要完成的功能
+3.渲染第二个页面数据
+4.表单校验，如果没有输入正确不让提交
 
-## Project setup
-```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
